@@ -1,0 +1,128 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Just Do it</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="tab_title_main_1">To-do List</string>
+    <string name="tab_title_main_2">Pomodoro Clock</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="news_one_title">Title1</string>
+    <string name="news_one_desc">Text1</string>
+    <string name="news_two_title">Title2</string>
+    <string name="news_two_desc">Text2</string>
+    <string name="news_three_title">Title3</string>
+    <string name="news_three_desc">Text3</string>
+    <string name="news_four_title">Title4</string>
+    <string name="news_four_desc">Text4</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_basic">BasicActivity</string>
+
+    <string name="appbar_circleimageview_behavior">com.example.lulin.todolist.CircleImageInUsercBehavior</string>
+    <string name="appbar_overscroll_behavior">com.example.lulin.todolist.AppBarLayoutOverScrollViewBehavior</string>
+
+    <string name="about_app">Welcome!
+        \n\n This is a todo - pomodoro clock application based on Material Design specification
+        \n\n Provides to-do list, tomato clock, white noise, focus mode, data synchronization, data statistics and more
+        \n\n In order to bring better user experience, the overall interface is based on Google\'s latest Material Design specifications, simple and elegant.
+         </string>
+    <string name="about_function"> - To-do list: exquisite to-do card, provide arrival reminder, repeat reminder and other functions.
+        \n\n - Pomodoro Clock: Minimalist interface, based on pomodoro method, set every 25 minutes as a task interval, focus on study and work, improve efficiency.
+        \n\n - White noise: When your tomato clock is working, you can choose to turn on natural pure music to help you work more pleasant, more comfortable sleep.
+        \n\n - Focus mode: After turning on the focus mode, it will block other apps from opening, allowing you to focus more on study and work.
+        \n\n - Data statistics: Real-time statistics of users\' tomato clock data.
+    </string>
+
+
+    <string name="focus_explain">Note: To open the focus mode, you need to open the permission of "Get application status". If you open this switch and start the timer, all non-system apps except this App will be blocked</string>
+
+
+    <!-- button -->
+    <string name="btn_start">Start</string>
+    <string name="btn_pause">Pause</string>
+    <string name="btn_resume">Resume</string>
+    <string name="btn_stop">Stop</string>
+    <string name="btn_skip">Skip</string>
+
+    <string name="scene_title_work">Now Work</string>
+    <string name="scene_title_break">Now Rest</string>
+
+    <string name="scene_work">Work</string>
+    <string name="scene_short_break">Short Rest</string>
+    <string name="scene_long_break">Long Rest</string>
+
+    <string name="amount_durations">Pomodoro Time %1$d minutes</string>
+    <string name="stage_time_unit">%1$d minutes</string>
+    <string name="time_unit">minutes</string>
+
+
+    <!-- 通知 -->
+    <string name="notification_focus">Working...</string>
+    <string name="notification_focus_pause">Work Pause</string>
+    <string name="notification_break">Breaking...</string>
+    <string name="notification_break_pause">Break Pause</string>
+    <string name="notification_time_left">Time Left</string>
+    <string name="notification_finish">Finish!</string>
+    <string name="notification_finish_content">Take a break now!</string>
+    <string name="notification_break_finish">Break Finish</string>
+    <string name="notification_break_finish_content">Let\'s start the next tomato clock!</string>
+
+    <!-- 设置 -->
+    <string name="pref_title_tick_title">Setting</string>
+    <string name="pref_title_work_length">Tomato Clock Duration</string>
+    <string name="pref_title_short_break">Short Break</string>
+    <string name="pref_title_long_break">Long Break</string>
+    <string name="pref_title_long_break_frequency">Long Break Frequency</string>
+    <string name="pref_title_frequency_value">%1$d Tomatoes</string>
+    <string name="pref_title_time_value">%1$d minutes</string>
+
+    <string name="pref_title_pomodoro_element">Pomodoro Element</string>
+    <string name="pref_title_pomodoro_mode">Pomodoro Mode</string>
+    <string name="pref_title_pomodoro_mode_summary">Can\'t pause during tomato clock</string>
+    <string name="pref_title_infinity_mode">Infinity Mode</string>
+    <string name="pref_title_infinity_mode_summary">Automatically start the next tomato clock</string>
+    <string name="pref_title_ticking_sound">Ticktock</string>
+    <string name="pref_title_ticking_sound_summary">Ticktock during tomato clock</string>
+
+    <string name="pref_title_notifications">Alert</string>
+    <string name="pref_title_use_notification">Notification after completion</string>
+    <string name="pref_title_notification_sound">Sound</string>
+    <string name="pref_title_notification_vibrate">Vibrate</string>
+
+    <string name="pref_title_advanced">Advanced</string>
+    <string name="pref_title_screen_on">Screen On</string>
+    <string name="pref_title_screen_on_summary">Screen on during tomato clock</string>
+    <string name="pref_title_check_update">Check Update</string>
+
+    <string name="schedule_today_title">Today</string>
+    <string name="schedule_amount_title">Accumulated Data</string>
+    <string name="schedule_durations">Pomodoro Duration</string>
+    <string name="schedule_times">Pomodoro Times</string>
+    <string name="schedule_done">Completion times</string>
+    <string name="schedule_amount_summary">Note: Uninstall the application, the accumulated data will be recalculated!</string>
+    <string name="toast_tick_sound_on">White Noise ON</string>
+    <string name="toast_tick_sound_off">White Noise OFF</string>
+    <string name="minutes">minutes</string>
+    <string name="focus_mode">Focus mode</string>
+</resources>

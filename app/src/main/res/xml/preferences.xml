@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="Setting">
+
+    <PreferenceCategory
+        android:title="Message">
+
+        <RingtonePreference
+            android:key="ring_tone"
+            android:title="Notification"
+            android:summary="Default"
+            android:ringtoneType="notification"
+            android:defaultValue="content://settings/system/notification_sound"/>
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:title="Focus Mode">
+
+        <SwitchPreference
+            android:key="focus"
+            android:title="Focus Mode"
+            android:summary="Turning on focus mode will prevent other apps from opening"
+            android:defaultValue="false" />
+
+        <Preference
+            android:summary="@string/focus_explain"/>
+
+
+    </PreferenceCategory>
+
+    <Preference
+        android:key="change_pwd"
+        android:title="Change Password" />
+
+    <Preference
+        android:key="exit_login"
+        android:title="Exit"
+        />
+
+
+
+
+</PreferenceScreen>
+
+
+
+

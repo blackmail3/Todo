@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_todo"
+            android:icon="@drawable/ic_assignment_black_48dp"
+            android:title="To-Do List" />
+        <item
+            android:id="@+id/nav_clock"
+            android:icon="@drawable/ic_clock_black_48dp"
+            android:title="Tomato Clock" />
+        <item
+            android:id="@+id/nav_frends"
+            android:icon="@drawable/ic_insert_chart_black_24dp"
+            android:title="Record" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_about"
+            android:title="About" />
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_setting"
+            android:title="Setting" />
+    </group>
+
+</menu>
