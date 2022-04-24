@@ -32,13 +32,13 @@ public class ColorFilterToolBar extends Toolbar {
         mPaint.setAntiAlias(true);
         WindowManager wm = (WindowManager) getContext()
                 .getSystemService(Context.WINDOW_SERVICE);
-        windowWidth = wm.getDefaultDisplay().getWidth();//获取屏幕宽度
+        windowWidth = wm.getDefaultDisplay().getWidth();//width
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         for (int i = 1; i <= windowWidth; i++) {
-            // 设置画笔颜色为自定义颜色
+            // color
             mPaint.setColor((Integer) evaluateColor(Math.pow(i/ windowWidth,2),STRAT_BLUE,END_BLUE));
             canvas.drawRect(i-1, 0, i, height,mPaint);
         }
@@ -51,7 +51,6 @@ public class ColorFilterToolBar extends Toolbar {
     }
 
     /**
-     * 颜色变化过度
      *
      * @param fraction
      * @param startValue

@@ -33,7 +33,7 @@ public class AlarmService extends KeepliveService {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.i(TAG, "服务启动！");
+        Log.i(TAG, "service start！");
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -45,29 +45,30 @@ public class AlarmService extends KeepliveService {
             try {
                 for (Todos todos : todosList) {
                     if (todos.getRemindTime() - System.currentTimeMillis() > 0 ) {
-                        //启动广播
+
                         startNotification = new Intent(AlarmService.this, AlarmReceiver.class);
                         startNotification.putExtra("title", todos.getTitle());
                         startNotification.putExtra("dsc", todos.getDesc());
                         startNotification.putExtra("ringTone", (String) SPUtils.get(getApplication(), KEY_RINGTONE, ""));
-                        //这里是系统闹钟的对象
+
                         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                        //设置事件
+
                         pendingIntent = PendingIntent.getBroadcast(this, todos.getId(), startNotification, PendingIntent.FLAG_UPDATE_CURRENT);
                         if (todos.getIsRepeat() == 0){
-                            alarmManager.set(AlarmManager.RTC_WAKEUP, todos.getRemindTime(), pendingIntent);    //提交事件，发送给 广播接收器,提醒一次
-                            Log.i(TAG, "发送单次提醒");
-                            Log.i(TAG, "标题是:" + todos.getTitle());
-                            Log.i(TAG, "时间是:" + todos.getRemindTime());
-                            Log.i(TAG, "日期是:" + System.currentTimeMillis() / 1000 / 60 / 60 / 24);
-                            Log.i(TAG, "铃声：" + (String) SPUtils.get(getApplication(), KEY_RINGTONE, ""));
+                            alarmManager.set(AlarmManager.RTC_WAKEUP, todos.getRemindTime(), pendingIntent);
+
+                            Log.i(TAG, "Send a single reminder ");
+                            Log.i(TAG, "Title:" + todos.getTitle());
+                            Log.i(TAG, "Time:" + todos.getRemindTime());
+                            Log.i(TAG, "Date:" + System.currentTimeMillis() / 1000 / 60 / 60 / 24);
+                            Log.i(TAG, "Ringtone：" + (String) SPUtils.get(getApplication(), KEY_RINGTONE, ""));
                         }else if (todos.getIsRepeat() == 1){
-                            //设置每隔24小时提醒一次
+                            //24h
                             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, todos.getRemindTimeNoDay(), 1000 * 60 * 60 * 24, pendingIntent);
-                            Log.i(TAG, "发送重复提醒");
-                            Log.i(TAG, "标题是:" + todos.getTitle());
-                            Log.i(TAG, "时间是:" + todos.getRemindTimeNoDay());
-                            Log.i(TAG, "日期是:" + System.currentTimeMillis() / 1000 / 60 / 60 / 24);
+                            Log.i(TAG, "Send repeat reminders \n");
+                            Log.i(TAG, "Title:" + todos.getTitle());
+                            Log.i(TAG, "Time:" + todos.getRemindTimeNoDay());
+                            Log.i(TAG, "Date:" + System.currentTimeMillis() / 1000 / 60 / 60 / 24);
                         }
 
                         ToDoUtils.setHasAlerted(this,todos.getId());

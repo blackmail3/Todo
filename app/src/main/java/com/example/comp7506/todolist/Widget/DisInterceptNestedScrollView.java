@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 /**
- * Func:用于子类防止父类拦截子类的事件
+ * Func: Used by subclasses to prevent their parent classes from intercepting subclasses' events
  */
 public class DisInterceptNestedScrollView extends NestedScrollView {
     public DisInterceptNestedScrollView(Context context) {

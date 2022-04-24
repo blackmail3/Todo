@@ -13,7 +13,7 @@ public class ClockApplication extends Application {
     public static final int DEFAULT_WORK_LENGTH = 25;
     public static final int DEFAULT_SHORT_BREAK = 5;
     public static final int DEFAULT_LONG_BREAK  = 20;
-    public static final int DEFAULT_LONG_BREAK_FREQUENCY = 4; // 默认 4 次开始长休息
+    public static final int DEFAULT_LONG_BREAK_FREQUENCY = 4; // The default long rest starts 4 times
 
     public static final int SCENE_WORK = 0;
     public static final int SCENE_SHORT_BREAK = 1;
@@ -100,15 +100,15 @@ public class ClockApplication extends Application {
     }
 
     private void setTimes() {
-        mTimes++; // 注意这里不能在 activity 中使用, 如果睡眠中就不能保证会运行
+        mTimes++; // Note that this cannot be used in an activity and is not guaranteed to run if you are sleeping
     }
 
     public int getScene() {
         int frequency = (int)SPUtils
                 .get(this,"pref_key_long_break_frequency", DEFAULT_LONG_BREAK_FREQUENCY);
-        frequency = frequency * 2; // 工作/短休息/工作/短休息/工作/短休息/工作/长休息
+        frequency = frequency * 2; // Work/short rest/work/short rest/work/short rest/work/long rest
 
-        if (mTimes % 2  == 1) { // 偶数：工作, 奇数：休息
+        if (mTimes % 2  == 1) { // Even: work, odd: rest
 
             if ((mTimes + 1 ) % frequency == 0) { // 长休息
                 return SCENE_LONG_BREAK;

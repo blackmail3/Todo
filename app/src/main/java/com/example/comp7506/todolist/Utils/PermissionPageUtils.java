@@ -21,15 +21,14 @@ import java.util.List;
 import es.dmoral.toasty.Toasty;
 
 /**
- * 权限获取工具类，适配主流厂商设备
- * @author Lulin
+ * Permission obtaining tools for mainstream vendors
  */
 
 public class PermissionPageUtils {
     private final String TAG = "PermissionPageManager";
     private Context mContext;
-    //自己的项目包名
-    private String packageName="com.example.lulin.todolist";
+
+    private String packageName="com.example.comp7506.todolist";
 
     public PermissionPageUtils(Context context) {
         this.mContext = context;
@@ -79,7 +78,7 @@ public class PermissionPageUtils {
             intent.setComponent(comp);
             mContext.startActivity(intent);
         } catch (Exception e) {
-            Toasty.error(mContext,"跳转失败", Toast.LENGTH_SHORT).show();
+            Toasty.error(mContext,"Jump fail!", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
             goIntentSetting();
         }
@@ -91,7 +90,7 @@ public class PermissionPageUtils {
             intent.setComponent(comp);
             mContext.startActivity(intent);
         } catch (Exception e) {
-            Toasty.error(mContext,"跳转失败", Toast.LENGTH_SHORT).show();
+            Toasty.error(mContext,"Jump fail!", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
             goIntentSetting();
         }
@@ -105,7 +104,7 @@ public class PermissionPageUtils {
             intent.setComponent(comp);
             mContext.startActivity(intent);
         } catch (Exception e) {
-            Toasty.error(mContext,"跳转失败", Toast.LENGTH_SHORT).show();
+            Toasty.error(mContext,"Jump fail!", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
             goIntentSetting();
         }
@@ -165,7 +164,7 @@ public class PermissionPageUtils {
     }
 
     private void goSangXinMainager() {
-        //三星4.3可以直接跳转
+
         goIntentSetting();
     }
 
@@ -188,7 +187,6 @@ public class PermissionPageUtils {
      * doStartApplicationWithPackageName("com.yulong.android.security:remote")
      * 和Intent open = getPackageManager().getLaunchIntentForPackage("com.yulong.android.security:remote");
      * startActivity(open);
-     * 本质上没有什么区别，通过Intent open...打开比调用doStartApplicationWithPackageName方法更快，也是android本身提供的方法
      */
     private void goCoolpadMainager() {
         doStartApplicationWithPackageName("com.yulong.android.security:remote");
@@ -202,11 +200,6 @@ public class PermissionPageUtils {
         startActivity(openQQ);*/
     }
 
-    /**
-     * 此方法在手机各个机型设置中已经失效
-     *
-     * @return
-     */
     private Intent getAppDetailSettingIntent() {
         Intent localIntent = new Intent();
         localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -17,9 +17,9 @@ public class PhotoUtils {
     private static final String TAG = "PhotoUtils";
 
     /**
-     * @param activity    当前activity
-     * @param imageUri    拍照后照片存储路径
-     * @param requestCode 调用系统相机请求码
+     * @param activity The current activity
+     * @param imageUri The path where the photo is stored after the photo is taken
+     * @param requestCode calls the system camera requestCode
      */
     public static void takePicture(Activity activity, Uri imageUri, int requestCode) {
         //调用系统相机
@@ -31,8 +31,8 @@ public class PhotoUtils {
     }
 
     /**
-     * @param activity    当前activity
-     * @param requestCode 打开相册的请求码
+     * @param activity The current activity
+     * @param requestCode specifies the requestCode to open the album
      */
     public static void openPic(Activity activity, int requestCode) {
         Intent photoPickerIntent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -41,14 +41,14 @@ public class PhotoUtils {
     }
 
     /**
-     * @param activity    当前activity
-     * @param orgUri      剪裁原图的Uri
-     * @param desUri      剪裁后的图片的Uri
-     * @param aspectX     X方向的比例
-     * @param aspectY     Y方向的比例
-     * @param width       剪裁图片的宽度
-     * @param height      剪裁图片高度
-     * @param requestCode 剪裁图片的请求码
+     * @param activity The current activity
+     * @param orgUri Cuts the Uri of the original image
+     * @param desUri Specifies the Uri of the cropped image
+     * @param aspectX X direction scale
+     * @param aspectY Y direction ratio
+     * @param width Clipping the width of the image
+     * @param height Crop the image height
+     * @param requestCode specifies the requestCode for cutting images
      */
     public static void cropImageUri(Activity activity, Uri orgUri, Uri desUri, int aspectX, int aspectY, int width, int height, int requestCode) {
         Intent intent = new Intent("com.android.camera.action.CROP");
@@ -56,17 +56,17 @@ public class PhotoUtils {
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         }
         intent.setDataAndType(orgUri, "image/*");
-        //发送裁剪信号
+        //Send clipping signal
         intent.putExtra("crop", "true");
         intent.putExtra("aspectX", aspectX);
         intent.putExtra("aspectY", aspectY);
         intent.putExtra("outputX", width);
         intent.putExtra("outputY", height);
         intent.putExtra("scale", true);
-        //将剪切的图片保存到目标Uri中
+        // Save the clipped image to the target Uri
         intent.putExtra(MediaStore.EXTRA_OUTPUT, desUri);
-        //1-false用uri返回图片
-        //2-true直接用bitmap返回图片（此种只适用于小图片，返回图片过大会报错）
+        //1-false Returns the image with the URI
+        //2-true Returns the image directly from the bitmap (this is only applicable to small images, too many images will be returned)
         intent.putExtra("return-data", false);
         intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
         intent.putExtra("noFaceDetection", true);
@@ -74,11 +74,11 @@ public class PhotoUtils {
     }
 
     /**
-     * 读取uri所在的图片
+     * Read the image where the URI is located
      *
-     * @param uri      图片对应的Uri
-     * @param mContext 上下文对象
-     * @return 获取图像的Bitmap
+     * @param uri Specifies the uri of the image
+     * @param mContext Context object
+     * @return retrieves the Bitmap of the image
      */
     public static Bitmap getBitmapFromUri(Uri uri, Context mContext) {
         try {
@@ -91,9 +91,9 @@ public class PhotoUtils {
     }
 
     /**
-     * @param context 上下文对象
-     * @param uri     当前相册照片的Uri
-     * @return 解析后的Uri对应的String
+     * @param context Context object
+     * @param uri Uri of the photo in the current album
+     * @return Parses the String of the Uri
      */
     @SuppressLint("NewApi")
     public static String getPath(final Context context, final Uri uri) {

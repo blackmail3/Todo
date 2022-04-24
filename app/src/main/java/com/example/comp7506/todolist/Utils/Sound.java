@@ -7,7 +7,7 @@ import android.preference.PreferenceManager;
 
 
 /**
- * 4.4 出现 MediaPlayer: Should have subtitle controller already set 错误
+ * 4.4 Error: MediaPlayer: Should have subtitle controller already set
  * Don't care about this "Exception".
  *
  * @link https://stackoverflow.com/questions/20087804/should-have-subtitle-controller-already-set-mediaplayer-error-android
@@ -34,8 +34,8 @@ public class Sound {
 
 
     /**
-     * setLooping(true) 虽然能循环播放，但不能做到无缝播放处理，会出现短暂的暂停
-     * 这里采用 setNextMediaPlayer 来解决这问题
+     * SetLooping (true) Can be performed in a loop, but cannot be seamless, causing a short pause
+     * setNextMediaPlayer is used here to solve this problem
      *
      * @link https://stackoverflow.com/questions/13409657/how-to-loop-a-sound-without-gaps-in-android
      * @link https://developer.android.com/reference/android/media/MediaPlayer.html#setNextMediaPlayer(android.media.MediaPlayer)
@@ -74,7 +74,7 @@ public class Sound {
     }
 
     /**
-     * 不要调用 MediaPlayer.stop 停止播放音频，调用这个方法后的 MediaPlayer 对象无法再播放音频
+     * Do not call mediaPlayer. stop to stop playing audio. The MediaPlayer object after calling this method can no longer play audio
      */
     public void stop() {
         if (mMediaPlayer.isPlaying()) {

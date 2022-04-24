@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 /**
- *  SharedPreferences工具类
+ *  SharedPreferences Utility class
  */
 
 public class SPUtils {
@@ -16,12 +16,12 @@ public class SPUtils {
     private static final String KEY_VIBRATE = "vibrator";
 
     /**
-     * 保存在手机里面的文件名
+     * The file name saved in the phone
      */
     public static final String FILE_NAME = "share_data";
 
     /**
-     * 保存数据的方法，我们需要拿到保存数据的具体类型，然后根据类型调用不同的保存方法
+     * To save the data, we need to get the specific type to save the data, and then call different save methods according to the type
      * @param context
      * @param key
      * @param object
@@ -57,7 +57,7 @@ public class SPUtils {
     }
 
     /**
-     * 得到保存数据的方法，我们根据默认值得到保存的数据的具体类型，然后调用相对于的方法获取值
+     * To get the method to save the data, we use the default value of the specific type of data to save, and then call the method to get the value
      *
      * @param context
      * @param key
@@ -90,7 +90,7 @@ public class SPUtils {
     }
 
     /**
-     * 移除某个key值已经对应的值
+     * Remove a value that already corresponds to a key value
      * @param context
      * @param key
      */
@@ -104,7 +104,7 @@ public class SPUtils {
     }
 
     /**
-     * 清除所有数据
+     * Clear all data
      * @param context
      */
     public static void clear(Context context)
@@ -117,7 +117,7 @@ public class SPUtils {
     }
 
     /**
-     * 查询某个key是否已经存在
+     * Query whether a key already exists
      * @param context
      * @param key
      * @return
@@ -130,7 +130,7 @@ public class SPUtils {
     }
 
     /**
-     * 返回所有的键值对
+     * Return all key-value pairs
      *
      * @param context
      * @return
@@ -143,7 +143,7 @@ public class SPUtils {
     }
 
     /**
-     * 创建一个解决SharedPreferencesCompat.apply方法的一个兼容类
+     * Create a solution to SharedPreferencesCompat. Apply method of a compatible class
      *
      * @author zhy
      *
@@ -153,7 +153,7 @@ public class SPUtils {
         private static final Method sApplyMethod = findApplyMethod();
 
         /**
-         * 反射查找apply的方法
+         * Reflection looks for methods that apply
          *
          * @return
          */
@@ -172,7 +172,7 @@ public class SPUtils {
         }
 
         /**
-         * 如果找到则使用apply执行，否则使用commit
+         * Apply if found, commit otherwise
          *
          * @param editor
          */

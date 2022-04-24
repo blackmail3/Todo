@@ -100,18 +100,8 @@ public class SeekBarPreference implements SeekBar.OnSeekBarChangeListener {
     }
 
     private void persistInt(int value) {
-//        SharedPreferences.Editor editor = mSharedPreferences.edit();
-//        editor.putInt(mKey, value);
         SPUtils.put(mContext, mKey, value);
         Log.i("SeekBar", mKey);
-//        try {
-//            editor.apply();
-//        } catch (AbstractMethodError unused) {
-//            // The app injected its own pre-Gingerbread
-//            // SharedPreferences.Editor implementation without
-//            // an apply method.
-//            editor.commit();
-//        }
     }
 
     @Override

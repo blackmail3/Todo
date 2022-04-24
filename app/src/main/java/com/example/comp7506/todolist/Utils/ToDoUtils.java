@@ -17,12 +17,12 @@ import cn.bmob.v3.listener.UpdateListener;
 
 
 /**
- * 用于待办事项提醒服务的工具类
+ * Utility class for the to-do reminder service
  */
 public class ToDoUtils {
 
     /**
-     * 获取并返回今天未被提醒切大于当前时间的事项
+     * Get and return today's unreminded events that are longer than the current time
      * @return
      */
     public static List<Todos> getTodayTodos(Context context){
@@ -44,7 +44,7 @@ public class ToDoUtils {
     }
 
     /**
-     * 返回数据库用户所有的任务
+     * Return all tasks of the database user
      *
      * @param context
      * @return
@@ -57,7 +57,7 @@ public class ToDoUtils {
         // temp = dbUtils.findAll(Tasks.class);
 //            List<Task> findAll = dbUtils.findAll(Selector.from(Task.class).orderBy("time"));
         List<Todos> findAll = new ToDoDao(context).getAllTask();
-        Log.i("ToDoUtils","任务个数" + findAll.size());
+        Log.i("ToDoUtils","The number of tasks" + findAll.size());
         if (findAll != null && findAll.size() > 0) {
             temp.addAll(findAll);
         }
@@ -68,7 +68,7 @@ public class ToDoUtils {
     }
 
     /**
-     * 将改任务设置为已被提醒
+     * Set the change task to be reminded
      */
     public static void setHasAlerted(Context context, int id) {
         ToDoDao toDoDao = new ToDoDao(context);

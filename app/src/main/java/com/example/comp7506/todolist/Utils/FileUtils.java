@@ -9,21 +9,21 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * 复制assets下的默认头像
- * 到sd卡包目录的工具类
+ * Copy the default avatar under Assets
+ * Utility classes to the SD card package directory
  */
 public class FileUtils {
 
     public void copyData(Context context) {
         InputStream in = null;
         FileOutputStream out = null;
-        String path = context.getFilesDir().getAbsolutePath() + "/default_head.png"; // data/data目录
+        String path = context.getFilesDir().getAbsolutePath() + "/default_head.png"; // data/data
         Log.i("MainActivity", path);
         File file = new File(path);
         if (!file.exists()) {
             try
             {
-                in = context.getAssets().open("default_head.png"); // 从assets目录下复制
+                in = context.getAssets().open("default_head.png"); // Copy from assets
                 out = new FileOutputStream(file);
                 int length = -1;
                 byte[] buf = new byte[1024];

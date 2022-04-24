@@ -1,8 +1,5 @@
 package com.example.comp7506.todolist.Widget;
 
-/**
- * Created by Lulin on 2018/6/30.
- */
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -19,12 +16,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
-public class ClockView extends View {  //定义View的子类，用于显示番茄钟界面
+public class ClockView extends View {  //Tomato Clock
 
     private int centerX;
     private int centerY;
     private int radius;
-    private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);  //ANTI_ALIAS_FLAG:抗锯齿
+    private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);  //ANTI_ALIAS_FLAG:anti-aliasing
     private Paint timePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private int mColor = Color.parseColor("#D1D1D1");
     private RectF mRectF = new RectF();
@@ -33,14 +30,13 @@ public class ClockView extends View {  //定义View的子类，用于显示番�
     private float sweepVelocity = 0;
     private String textTime = "00:00";
 
-    //分钟
     private int time;
 
     //Tomato
     private static int tomato;
 
-    //倒计时
-    private int countdownTime; //倒计时秒数
+    //countdown
+    private int countdownTime;
     private float touchX;
     private float touchY;
     private float offsetX;
@@ -49,28 +45,27 @@ public class ClockView extends View {  //定义View的子类，用于显示番�
     ValueAnimator valueAnimator;
 
 
-    //倒数计时器
     CountDownTimer timer;
 
     public ClockView(Context context) {
         super(context);
-    }  //重写构造方法
+    }
 
     public ClockView(Context context, @Nullable AttributeSet attrs) {  //重写带接收xml属性信息的构造方法
         super(context, attrs);
     }
 
-    public ClockView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) { //第三个参数是接收默认的属性赋值
+    public ClockView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) { //defStyleAttr - default
         super(context, attrs, defStyleAttr);
     }
 
     public static float dpToPixel(float dp) {
         DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics(); //获取屏幕参数
-        return dp * metrics.density;  //density是显示器的逻辑像素密度，density = dpi(dots per inch) / 160,像素 = dp*density
+        return dp * metrics.density;  //density - the logical pixel density of the display，density = dpi(dots per inch) / 160,像素 = dp*density
     }
 
-    @Override //重写父类方法，返回值和形参不得改变
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) { //重写onMeasure方法，测量控件大小
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int height = MeasureSpec.getSize(heightMeasureSpec);
         int width = MeasureSpec.getSize(widthMeasureSpec);
@@ -82,25 +77,25 @@ public class ClockView extends View {  //定义View的子类，用于显示番�
     }
 
     @Override
-    protected void onDraw(Canvas canvas) { //重写onDraw方法，进行绘图
+    protected void onDraw(Canvas canvas) { //Override onDraw
         super.onDraw(canvas);
-        mRectF.set(centerX - radius, centerY - radius, centerX + radius, centerY + radius); //设置一个正方形，用于绘制灰弧
-        //黑圆
-        canvas.save(); //保存画布
+        mRectF.set(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+
+        canvas.save(); //save canvas
         mPaint.setColor(Color.BLACK);
-        mPaint.setStyle(Paint.Style.STROKE); //Paint.Style.STROKE表示该圆是空心的
+        mPaint.setStyle(Paint.Style.STROKE); //Paint.Style.STROKE
         mPaint.setStrokeWidth(dpToPixel(5));
         canvas.drawCircle(centerX, centerY, radius, mPaint);
-        canvas.restore(); //还原画布
-        //灰弧
+        canvas.restore();
+        //gray
         canvas.save();
         mPaint.setColor(mColor);
-        canvas.drawArc(mRectF, START_ANGLE, 360 * sweepVelocity, false, mPaint);//useCenter:false表示不需要绘制弧与圆心的连线
+        canvas.drawArc(mRectF, START_ANGLE, 360 * sweepVelocity, false, mPaint);//useCenter:false - do not need to draw the arc line to the center of the circle
         canvas.restore();
-        //时间
+        //Time
         canvas.save();
         timePaint.setColor(Color.BLACK);
-        timePaint.setStyle(Paint.Style.FILL); //Paint.Style.FILL表示字体实心
+        timePaint.setStyle(Paint.Style.FILL); //Paint.Style.FILL
         timePaint.setTextSize(dpToPixel(40));
         canvas.drawText(textTime, centerX - timePaint.measureText(textTime) / 2,
                 centerY - (timePaint.ascent() + timePaint.descent()) / 2, timePaint);
@@ -116,13 +111,13 @@ public class ClockView extends View {  //定义View的子类，用于显示番�
         float y = event.getY();
         boolean isContained = isContained(x, y);
         switch (event.getActionMasked()) {
-            case MotionEvent.ACTION_DOWN: //点击
+            case MotionEvent.ACTION_DOWN: //click
                 if (isContained) {
                     touchX = x;
                     touchY = y;
                 }
                 break;
-            case MotionEvent.ACTION_MOVE: //滑动
+            case MotionEvent.ACTION_MOVE: //sliding
                 if (isContained) {
                     offsetX = x - touchX;
                     offsetY = y - touchY;
@@ -135,15 +130,15 @@ public class ClockView extends View {  //定义View的子类，用于显示番�
                     else if(time < 50) tomato = 1;
                     else tomato = 2;
                     textTime = formatTime(time);
-                    countdownTime = time * 60;  //转化为秒
-                    invalidate(); //刷新显示
+                    countdownTime = time * 60;
+                    invalidate(); //Refresh
                 }
                 break;
         }
         return true;
     }
 
-    private boolean isContained(float x, float y) { //判断点击坐标是否在圆中
+    private boolean isContained(float x, float y) {
         if (Math.sqrt((x - centerX) * (x - centerX) + (y - centerY) * (y - centerY)) > radius) {
             return false;
         } else {
@@ -151,7 +146,7 @@ public class ClockView extends View {  //定义View的子类，用于显示番�
         }
     }
 
-    private String formatTime(int time) {  //把时间（分钟）转换成字符串
+    private String formatTime(int time) {
         StringBuilder sb = new StringBuilder();
         if (time < 10) {
             sb.append("0" + time + ":00");
@@ -161,7 +156,7 @@ public class ClockView extends View {  //定义View的子类，用于显示番�
         return sb.toString();
     }
 
-    private String formatCountdownTime(int countdownTime) {  //把时间（秒数转换成字符串）
+    private String formatCountdownTime(int countdownTime) {
         StringBuilder sb = new StringBuilder();
         int minute = countdownTime / 60;
         int second = countdownTime - 60 * minute;
@@ -179,18 +174,16 @@ public class ClockView extends View {  //定义View的子类，用于显示番�
     }
 
     public void start(){
-        //判断是否已经开始计时或已计时结束
+        //Determines whether the timer has started or ended
         if (countdownTime == 0 || isStarted) {
             return;
         }
 
-        //设置开始计时标志
         isStarted = true;
 
-        //设置属性动画
         valueAnimator = ValueAnimator.ofFloat(0, 1.0f);
         valueAnimator.setDuration(countdownTime * 1000);
-        valueAnimator.setInterpolator(new LinearInterpolator()); //在countdownTime * 1000ms的时间内，float值从0增加到1
+        valueAnimator.setInterpolator(new LinearInterpolator()); // During countdownTime*1000ms, float value increased from 0 to 1
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -209,7 +202,7 @@ public class ClockView extends View {  //定义View的子类，用于显示番�
                 invalidate();
             }
 
-            //计时结束
+            //Finish
             @Override
             public void onFinish() {
                 mColor = Color.BLACK;

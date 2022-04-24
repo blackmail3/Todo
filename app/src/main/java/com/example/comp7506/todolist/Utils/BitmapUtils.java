@@ -8,7 +8,7 @@ import java.io.InputStream;
 
 public class BitmapUtils {
     /**
-     *  压缩图片，防止内存溢出
+     *  Compress images to prevent memory overflow
      *  @param context
      *  @param resId
      *  @return
@@ -18,7 +18,7 @@ public class BitmapUtils {
         opt.inPreferredConfig =  Bitmap.Config.RGB_565;
         opt.inPurgeable = true;
         opt.inInputShareable = true;
-        //  获取资源图片
+
         InputStream is =  context.getResources().openRawResource(resId);
         return  BitmapFactory.decodeStream(is, null, opt);
 

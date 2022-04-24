@@ -74,7 +74,7 @@ public class ClockProgressBar extends View {
         float radius = (float) (size / 2);
         float halfWidth = (float) (width / 2);
 
-        float scale = 0.618f; // 黄金分割
+        float scale = 0.618f;
         float top = radius - radius * scale;
         float left = halfWidth - radius * scale;
         float right = halfWidth + radius * scale;

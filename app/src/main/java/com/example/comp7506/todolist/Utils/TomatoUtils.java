@@ -18,7 +18,7 @@ import cn.bmob.v3.listener.UpdateListener;
 public class TomatoUtils {
 
     /**
-     * 返回数据库用户所有的番茄钟
+     * Return all of the database user's tomato clocks
      *
      * @param context
      * @return
@@ -35,7 +35,7 @@ public class TomatoUtils {
     }
 
     /**
-     * 返回网络上用户所有的番茄钟列表
+     * Return a list of user-owned tomato clocks on the network
      *
      * @param context
      * @param currentUser
@@ -49,7 +49,6 @@ public class TomatoUtils {
             public void done(List<Tomato> list, BmobException e) {
                 if (e==null){
                     Log.i("TomatoUtils", "查询到网络任务个数: " + list.size());
-                    // 1.更新本地数据库
 //                    if (list.size() > 0) {
 //                        ClockDao clockDao = new ClockDao(context);
 //                        clockDao.saveAll(list);

@@ -55,7 +55,7 @@ public class RankFragment extends Fragment {
             @Override
             public void done(List<User> list, BmobException e) {
                 if (e==null){
-                    Log.i("Rank", "查询到: "+list.size()+" 条数据");
+                    Log.i("Rank", "Query: "+list.size()+" Data");
                     setListData(list);
                     Log.i("Rank", ""+rankList.size());
                 }
@@ -63,9 +63,6 @@ public class RankFragment extends Fragment {
         });
     }
 
-    /**
-     * 设置list数据
-     */
     private void setListData(List<User> newList) {
         rankList.addAll(newList);
         rankRecyclerViewAdapter.notifyDataSetChanged();

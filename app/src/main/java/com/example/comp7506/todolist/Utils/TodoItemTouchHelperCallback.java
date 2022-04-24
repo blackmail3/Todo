@@ -8,9 +8,6 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import com.example.comp7506.todolist.Interface.ItemTouchHelperAdapter;
 import com.example.comp7506.todolist.Interface.ItemTouchHelperViewHolder;
 
-/**
- *
- */
 public class TodoItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     public static final float ALPHA_FULL = 1.0f;

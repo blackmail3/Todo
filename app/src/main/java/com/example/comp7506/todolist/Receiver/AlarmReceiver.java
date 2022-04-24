@@ -41,27 +41,26 @@ public class AlarmReceiver extends BroadcastReceiver {
         context.startService(intent);  //回调Service,同一个Service只会启动一个，所以直接再次启动Service，会重置开启新的提醒，
     }
     /**
-     *发送通知
+     * Send Notification
      */
     private void showNormal(Context context) {
-        Intent intent = new Intent(context, MainActivity.class);//这里是点击Notification 跳转的界面，可以自己选择
+        Intent intent = new Intent(context, MainActivity.class);
         PendingIntent pi = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Notification.Builder builder = new Notification.Builder(context);
-        builder.setSmallIcon(R.mipmap.today)     //设置通知图标。
+        builder.setSmallIcon(R.mipmap.today)     //icon
                     .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
-                    .setTicker(title)        //通知时在状态栏显示的通知内容
-                    .setContentInfo("Wise Reminder")        //内容信息
-                    .setContentTitle(title)        //设置通知标题。
-                    .setContentText(dsc)        //设置通知内容。
-                    .setAutoCancel(true)                //点击通知后通知消失
-//                    .setDefaults(Notification.DEFAULT_ALL)        //设置系统默认的通知音乐、振动、LED等。
-                    .setPriority(Notification.PRIORITY_MAX)  //设置通知为最高权限
+                    .setTicker(title)        //Notification content displayed in the status bar
+                    .setContentInfo("Wise Reminder")        //Content information
+                    .setContentTitle(title)        //Set notification title
+                    .setContentText(dsc)        //Set notification content
+                    .setAutoCancel(true)
+                    .setPriority(Notification.PRIORITY_MAX)
                     .setFullScreenIntent(pi, true)
                     .setContentIntent(pi);
 
         if (((String) SPUtils.get(context, KEY_RINGTONE, "")).equals("")){
-            builder.setDefaults(Notification.DEFAULT_ALL); //设置系统默认的通知音乐、振动
+            builder.setDefaults(Notification.DEFAULT_ALL);
             Log.i(TAG, "Default Ringtone");
         } else {
             builder.setSound(Uri.parse((String) SPUtils.get(context, KEY_RINGTONE, "")));
@@ -71,11 +70,11 @@ public class AlarmReceiver extends BroadcastReceiver {
         if (Build.VERSION.SDK_INT >= 21) {
             builder.setVisibility(Notification.VISIBILITY_PUBLIC);
         }
-        // 兼容  API 26，Android 8.0
+        // Compatible with API 26，Android 8.0
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            // 第三个参数表示通知的重要程度，默认则只在通知栏闪烁一下
+
             NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
-            // 注册通道，注册后除非卸载再安装否则不改变
+
             manager.createNotificationChannel(notificationChannel);
             builder.setChannelId(CHANNEL_ID);
         }

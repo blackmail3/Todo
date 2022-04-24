@@ -9,21 +9,21 @@ import com.example.comp7506.todolist.Activity.MainActivity;
 import com.example.comp7506.todolist.Service.AlarmService;
 
 /**
- * 自启动
+ * Self-running
  */
 public class BootUpReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals("android.media.AUDIO_BECOMING_NOISY")) {
-            /* 服务开机自启动 */
+            /* The service starts automatically upon startup  */
             Intent service = new Intent(context, AlarmService.class);
             context.startService(service);
             Log.i("BootUp", "自启动成功");
         }
 
         if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
-            /* 应用开机自启动 */
+            /* The application starts automatically upon startup */
             Intent intent_n = new Intent(context, MainActivity.class);
 
             intent_n.setAction("android.intent.action.MAIN");

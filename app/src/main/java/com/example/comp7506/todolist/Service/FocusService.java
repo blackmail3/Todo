@@ -23,7 +23,7 @@ import java.util.TimerTask;
 
 public class FocusService extends Service {
 
-    boolean flag = true;// 用于停止线程
+    boolean flag = true;
     private ArrayList<String> packageList = new ArrayList<>();
 
     private Timer timer;
@@ -73,7 +73,7 @@ public class FocusService extends Service {
         for (int i = 0; i < packages.size(); i++) {
             PackageInfo pi = packages.get(i);
             if ((pi.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
-                // 如果属于非系统程序，则添加到列表
+                // If it is a non-system program, add it to the list
                 packageList.add(pi.packageName);
                 Log.i("FocusService", pi.packageName);
 
@@ -82,8 +82,8 @@ public class FocusService extends Service {
     }
 
     /**
-     * 获取正在运行桌面包名（注：存在多个桌面时且未指定默认桌面时，该方法返回Null,使用时需处理这个情况）
-     */
+     * Gets the name of the running table bread (note: this method returns Null if there are multiple desktops and no    default desktop is specified, which needs to be handled when used)
+    */
     public String getLauncherPackageName(Context context) {
         final Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
@@ -113,16 +113,16 @@ public class FocusService extends Service {
                     .getSystemService(Context.USAGE_STATS_SERVICE);
             long endTime = System.currentTimeMillis();
             long startTime = endTime - 10000;
-            //查询这段时间内的所有使用事件
+
             UsageEvents usageEvents = usageStatsManager.queryEvents(startTime, endTime);
             UsageEvents.Event event = new UsageEvents.Event();
-            //遍历这个事件集合，如果还有下一个事件
+
             while (usageEvents.hasNextEvent()){
-                //得到下一个事件放入event中,先得得到下个一事件，如果这个时候直接调用，则event的package是null，type是0。
+                // Get the next event into the event, first get the next event, if directly called at this time, the event package is null, type is 0.
                 usageEvents.getNextEvent(event);
-                //如果这是个将应用置于前台的事件
+                // If this is an event that brings the application to the foreground
                 if(event.getEventType() == UsageEvents.Event.MOVE_TO_FOREGROUND){
-                    //获取这个前台事件的packageName.
+                    //packageName.
                     topPackageName = event.getPackageName();
                     for (int i = 0; i < packageList.size(); i++) {
                         if(topPackageName.equals(packageList.get(i))
@@ -136,10 +136,10 @@ public class FocusService extends Service {
 
 
         } else{
-            // 5.0之前
-            // 获取正在运行的任务栈(一个应用程序占用一个任务栈) 最近使用的任务栈会在最前面
-            // 1表示给集合设置的最大容量 List<RunningTaskInfo> infos = am.getRunningTasks(1);
-            // 获取最近运行的任务栈中的栈顶Activity(即用户当前操作的activity)的包名
+            // before 5.0
+            // Get the running task stack (one application occupies one task stack) the most recently used task stack is first
+            // 1 indicates the maximum capacity set to the collection List&lt; RunningTaskInfo&gt; infos = am.getRunningTasks(1);
+            // Get the package name of the top Activity(the Activity the user is currently operating on) in the most recently run task stack
             packageName = mActivityManager.getRunningTasks(1).get(0).topActivity.getPackageName();
             //Log.i(TAG,packageName);
         }

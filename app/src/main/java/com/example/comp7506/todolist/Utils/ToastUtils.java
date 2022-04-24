@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 /**
- * Toast统一管理类
+ * Toast Unified management class
  * 
  */
 public class ToastUtils
@@ -22,7 +22,7 @@ public class ToastUtils
 	public static boolean isShow = true;
 
 	/**
-	 * 短时间显示Toast
+	 * Display Toast for a short time
 	 * 
 	 * @param context
 	 * @param message
@@ -34,7 +34,7 @@ public class ToastUtils
 	}
 
 	/**
-	 * 短时间显示Toast
+	 * Display Toast for a short time
 	 * 
 	 * @param context
 	 * @param message
@@ -46,7 +46,7 @@ public class ToastUtils
 	}
 
 	/**
-	 * 长时间显示Toast
+	 * Display Toast for a long time
 	 * 
 	 * @param context
 	 * @param message
@@ -58,7 +58,7 @@ public class ToastUtils
 	}
 
 	/**
-	 * 长时间显示Toast
+	 * Display Toast for a long time
 	 * 
 	 * @param context
 	 * @param message
@@ -70,7 +70,7 @@ public class ToastUtils
 	}
 
 	/**
-	 * 自定义显示Toast时间
+	 * Custom display Toast time
 	 * 
 	 * @param context
 	 * @param message
@@ -83,7 +83,7 @@ public class ToastUtils
 	}
 
 	/**
-	 * 自定义显示Toast时间
+	 * Custom display Toast time
 	 * 
 	 * @param context
 	 * @param message

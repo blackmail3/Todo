@@ -42,22 +42,22 @@ import cn.bmob.v3.listener.UpdateListener;
 
 public class ClockService extends Service implements CountDownTimer.OnCountDownTickListener {
     public static final String ACTION_COUNTDOWN_TIMER =
-            "com.example.lulin.todolist.COUNTDOWN_TIMER";
-    public static final String ACTION_START = "com.example.lulin.todolist.ACTION_START";
-    public static final String ACTION_PAUSE = "com.example.lulin.todolist.ACTION_PAUSE";
-    public static final String ACTION_RESUME = "com.example.lulin.todolist.ACTION_RESUME";
-    public static final String ACTION_STOP = "com.example.lulin.todolist.ACTION_STOP";
-    public static final String ACTION_TICK = "com.example.lulin.todolist.ACTION_TICK";
-    public static final String ACTION_FINISH = "com.example.lulin.todolist.ACTION_FINISH";
+            "com.example.comp7506.todolist.COUNTDOWN_TIMER";
+    public static final String ACTION_START = "com.example.comp7506.todolist.ACTION_START";
+    public static final String ACTION_PAUSE = "com.example.comp7506.todolist.ACTION_PAUSE";
+    public static final String ACTION_RESUME = "com.example.comp7506.todolist.ACTION_RESUME";
+    public static final String ACTION_STOP = "com.example.comp7506.todolist.ACTION_STOP";
+    public static final String ACTION_TICK = "com.example.comp7506.todolist.ACTION_TICK";
+    public static final String ACTION_FINISH = "com.example.comp7506.todolist.ACTION_FINISH";
     public static final String ACTION_AUTO_START
-            = "com.example.lulin.todolist.ACTION_AUTO_START";
+            = "com.example.comp7506.todolist.ACTION_AUTO_START";
     public static final String ACTION_TICK_SOUND_ON =
-            "com.example.lulin.todolist.ACTION_TICK_SOUND_ON";
+            "com.example.comp7506.todolist.ACTION_TICK_SOUND_ON";
     public static final String ACTION_TICK_SOUND_OFF =
-            "com.example.lulin.todolist.ACTION_TICK_SOUND_OFF";
+            "com.example.comp7506.todolist.ACTION_TICK_SOUND_OFF";
     public static final String ACTION_POMODORO_MODE_ON =
-            "com.example.lulin.todolist.ACTION_POMODORO_MODE_OFF";
-    public static final String ACTION_CHANGE_MUSIC = "com.example.lulin.todolist.ACTION_CHANGE_MUSIC";
+            "com.example.comp7506.todolist.ACTION_POMODORO_MODE_OFF";
+    public static final String ACTION_CHANGE_MUSIC = "com.example.comp7506.todolist.ACTION_CHANGE_MUSIC";
 
     public static final String MILLIS_UNTIL_FINISHED = "MILLIS_UNTIL_FINISHED";
     public static final String REQUEST_ACTION = "REQUEST_ACTION";
@@ -129,7 +129,7 @@ public class ClockService extends Service implements CountDownTimer.OnCountDownT
                 case ACTION_START:
                     stopTimer();
 
-                    // 自动专注
+
                     if (action.equals(ACTION_AUTO_START)) {
                         Intent broadcastIntent = new Intent(ACTION_COUNTDOWN_TIMER);
                         broadcastIntent.putExtra(REQUEST_ACTION, ACTION_AUTO_START);
@@ -149,7 +149,7 @@ public class ClockService extends Service implements CountDownTimer.OnCountDownT
                             getNotificationTitle(), formatTime(millsInTotal)).build());
 
                     if (mApplication.getScene() == ClockApplication.SCENE_WORK) {
-                        // 插入数据
+                        // Insert
                         mDBAdapter.open();
                         mID = mDBAdapter.insert(mTimer.getStartTime(),
                                 mTimer.getMinutesInFuture(),clockTitle);
@@ -201,7 +201,7 @@ public class ClockService extends Service implements CountDownTimer.OnCountDownT
                     mSound.stop();
                     break;
                 case ACTION_POMODORO_MODE_ON:
-                    // 如果处于暂停状态，但番茄模式设置为 on ,停止番茄时钟
+                    // Stop the tomato clock if it is paused but the tomato mode is set to ON
                     if (mApplication.getState() == ClockApplication.STATE_PAUSE) {
                         if (mTimer != null) {
                             mTimer.resume();
@@ -270,7 +270,7 @@ public class ClockService extends Service implements CountDownTimer.OnCountDownT
             );
 
             if (mID > 0) {
-                // 更新数据
+                // Update
                 mDBAdapter.open();
                 boolean success = mDBAdapter.update(mID);
                 mDBAdapter.close();
@@ -281,21 +281,21 @@ public class ClockService extends Service implements CountDownTimer.OnCountDownT
                     @Override
                     public void done(String s, BmobException e) {
                         if (e==null){
-                            Log.i("ClockService", "保存番茄钟到bmob成功");
+                            Log.i("ClockService", "Save the tomato clock to BMob successfully");
                             user.increment("total", (int) SPUtils
                                     .get(getApplication(),"pref_key_work_length", ClockApplication.DEFAULT_WORK_LENGTH));
                             user.update(new UpdateListener() {
                                 @Override
                                 public void done(BmobException e) {
                                     if (e==null){
-                                        Log.i("ClockService", "番茄钟累计时间增加成功");
+                                        Log.i("ClockService", "Tomato clock added time successfully");
                                     } else {
-                                        Log.i("ClockService", "番茄钟累计时间增加失败");
+                                        Log.i("ClockService", "Failed to increase tomato clock total time");
                                     }
                                 }
                             });
                         } else {
-                            Log.i("ClockService", "保存番茄钟到bmob失败: " + e.getMessage());
+                            Log.i("ClockService", "Save tomato clock to BMob failed: " + e.getMessage());
                         }
                     }
                 });
@@ -328,7 +328,7 @@ public class ClockService extends Service implements CountDownTimer.OnCountDownT
 
             if (PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
                     .getBoolean("pref_key_notification_sound", true)) {
-                // 结束提示音
+
                 Uri uri = Uri.parse(
                         "android.resource://" + getPackageName() + "/" +
                                 (mApplication.getScene() == ClockApplication.SCENE_WORK ?
@@ -409,11 +409,11 @@ public class ClockService extends Service implements CountDownTimer.OnCountDownT
                 .setContentIntent(pi);
 
 
-        // 兼容  API 26，Android 8.0
+        // Compatible with API 26，Android 8.0
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            // 第三个参数表示通知的重要程度，默认则只在通知栏闪烁一下
+            // The 3rd parameter indicates the importance of the notification. Default - only flashes in the notification bar
             NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ONE_ID, CHANNEL_ONE_NAME, NotificationManager.IMPORTANCE_LOW);
-            // 注册通道，注册后除非卸载再安装否则不改变
+            // Register channel. After registration, it will not change unless uninstalled and then installed
             notificationManager.createNotificationChannel(notificationChannel);
             notificationChannel.setSound(null,null);
             builder.setChannelId(CHANNEL_ONE_ID);

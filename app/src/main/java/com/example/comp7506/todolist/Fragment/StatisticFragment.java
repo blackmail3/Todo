@@ -109,7 +109,6 @@ public class StatisticFragment extends Fragment {
                         });
 
 
-                        // 累计数据
                         BmobQuery<Clock> allAmount = new BmobQuery<Clock>();
                         allAmount.addWhereEqualTo("user", user);
                         allAmount.findObjects(new FindListener<Clock>() {

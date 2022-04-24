@@ -11,50 +11,26 @@ public class CountDownTimer {
 
     public interface OnCountDownTickListener {
 
-        /**
-         * CountDownTimer 更改时触发的事件
-         */
         void onCountDownTick(long millisUntilFinished);
-        /**
-         * CountDownTimer 完成时触发的事件
-         */
         void onCountDownFinish();
 
     }
 
-    /**
-     * CountDownTimer 要执行的时间(单位毫秒), 此时间并不包含暂停的时间
-     */
+
     private final long mMillisInFuture;
 
-    /**
-     * 间隔时间(单位毫秒)
-     */
+
     private final long mCountdownInterval;
 
-    /**
-     * 结束的时间(单位毫秒), 如果暂停会变化
-     */
+
     private long mStopTimeInFuture;
 
-    /**
-     * 剩余时间(单位毫秒)
-     */
     private long mMillisUntilFinished;
 
-    /**
-     * 暂停的状态
-     */
     private boolean mPaused = false;
 
-    /**
-     * 是否正在倒计时
-     */
     private boolean mIsRunning = false;
 
-    /**
-     * 倒计时开始的时间
-     */
     private Date mStartTime;
 
     private OnCountDownTickListener mOnCountDownTickListener;
@@ -83,14 +59,12 @@ public class CountDownTimer {
     }
 
     public final void pause() {
-        // 记录剩余时间
         mMillisUntilFinished = mStopTimeInFuture - SystemClock.elapsedRealtime();
         mIsRunning = false;
         mPaused = true;
     }
 
     public long resume() {
-        // 结束的时间设置为当前时间加剩余时间
         mStopTimeInFuture = SystemClock.elapsedRealtime() + mMillisUntilFinished;
         mHandler.sendMessage(mHandler.obtainMessage(MSG));
         mIsRunning = true;

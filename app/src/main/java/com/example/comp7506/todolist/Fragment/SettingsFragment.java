@@ -69,9 +69,9 @@ public class SettingsFragment extends PreferenceFragment {
         mChangePassWord = (Preference) preferenceScreen.findPreference(KEY_PWD);
         mExitLogin = (Preference) preferenceScreen.findPreference(KEY_EXIT);
         Uri uri = Uri.parse(SPUtils.get(getActivity(), KEY_RINGTONE, "").toString());
-        Log.i(TAG, "铃声" + getRingtonName(uri));
-        if (getRingtonName(uri).equals("未知铃声")){
-            mRingtone.setSummary("默认铃声");
+        Log.i(TAG, "ringtone" + getRingtonName(uri));
+        if (getRingtonName(uri).equals("Unknown ringtone")){
+            mRingtone.setSummary("Default ringtone");
         } else {
             mRingtone.setSummary(getRingtonName(uri));
         }
@@ -115,17 +115,17 @@ public class SettingsFragment extends PreferenceFragment {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 if (User.getCurrentUser(User.class)==null){
-                    ToastUtils.showShort(getActivity(),"未登录");
-                    Toasty.error(getActivity(), "账号或密码不正确", Toast.LENGTH_SHORT, true).show();
+                    ToastUtils.showShort(getActivity(),"Not logged in");
+                    Toasty.error(getActivity(), "The account or password is incorrect ", Toast.LENGTH_SHORT, true).show();
                 } else {
                     LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
                     View textEntryView = layoutInflater.inflate(R.layout.dialog_reset_pwd, null);
                     oldPwd = (EditText) textEntryView.findViewById(R.id.old_pwd);
                     newPwd = (EditText)textEntryView.findViewById(R.id.new_pwd);
                     final MaterialDialog resetDialog = new MaterialDialog(getActivity());
-                    resetDialog.setTitle("修改密码");
+                    resetDialog.setTitle("Change password");
                     resetDialog.setView(textEntryView);
-                    resetDialog.setPositiveButton("确定", new View.OnClickListener() {
+                    resetDialog.setPositiveButton("Confirm", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             String old_pwd = oldPwd.getText().toString();
@@ -134,27 +134,27 @@ public class SettingsFragment extends PreferenceFragment {
                                 @Override
                                 public void done(BmobException e) {
                                     if(e==null){
-                                        Toasty.success(getActivity(), "修改成功", Toast.LENGTH_SHORT, true).show();
-                                        BmobUser.logOut();   //清除缓存用户对象
-                                        Log.i(TAG, "成功");
+                                        Toasty.success(getActivity(), "Modify successfully", Toast.LENGTH_SHORT, true).show();
+                                        BmobUser.logOut();
+                                        Log.i(TAG, "Success");
                                         Intent intent = new Intent(getActivity(), MainActivity.class);
                                         getActivity().setResult(3,intent);
                                         getActivity().finish();
                                     }else{
-                                        Log.i(TAG, "done: 失败"+e.getMessage());
-                                        Toasty.error(getActivity(), "修改失败", Toast.LENGTH_SHORT, true).show();
+                                        Log.i(TAG, "done: Failed"+e.getMessage());
+                                        Toasty.error(getActivity(), "Fail to modify", Toast.LENGTH_SHORT, true).show();
                                     }
                                 }
                             });
                         }
                     });
-                    resetDialog.setNegativeButton("取消", new View.OnClickListener() {
+                    resetDialog.setNegativeButton("Cancel", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             resetDialog.dismiss();
                         }
                     });
-                    resetDialog.show();// 显示对话框
+                    resetDialog.show();
                 }
 
                 return false;
@@ -165,19 +165,19 @@ public class SettingsFragment extends PreferenceFragment {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 final MaterialDialog signOutDialog = new MaterialDialog(getActivity());
-                signOutDialog.setTitle("是否退出登录？")
-                        .setPositiveButton("确定", new View.OnClickListener() {
+                signOutDialog.setTitle("Log out or Not?")
+                        .setPositiveButton("Confirm", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 BmobUser.logOut();   //清除缓存用户对象
                                 SPUtils.put(getActivity(),"sync",false);
-                                Log.i(TAG, "注销成功");
+                                Log.i(TAG, "Success");
                                 Intent intent = new Intent(getActivity(), MainActivity.class);
                                 getActivity().setResult(3,intent);
                                 getActivity().finish();
                             }
                         })
-                        .setNegativeButton("取消", new View.OnClickListener() {
+                        .setNegativeButton("Cancel", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 signOutDialog.dismiss();
@@ -191,7 +191,7 @@ public class SettingsFragment extends PreferenceFragment {
     }
 
     /**
-     * 获取铃声名
+     * Get ringtone Name
      * @param uri
      * @return
      */
@@ -209,7 +209,7 @@ public class SettingsFragment extends PreferenceFragment {
     }
 
     /**
-     * 判断“查看应用使用情况”是否开启
+     * Check whether View Application Usage is enabled
      * @return
      */
     private boolean isNoSwitch() {
@@ -226,13 +226,12 @@ public class SettingsFragment extends PreferenceFragment {
     }
 
     /**
-     * 跳转到“查看应用使用情况”页面
+     * Display View Application Usage page
      */
     public void RequestPromission() {
         new AlertDialog.Builder(getActivity()).
-                setTitle("设置").
-                //setMessage("开启usagestats权限")
-                        setMessage(String.format(Locale.US,"打开专注模式请允App查看应用的使用情况。"))
+                setTitle("Setting").
+                        setMessage(String.format(Locale.US,"Turn on the focus mode to allow the App to view the application usage"))
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
