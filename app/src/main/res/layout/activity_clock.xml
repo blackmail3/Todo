@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/half_black"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.comp7506.todolist.Activity.ClockActivity">
+    tools:context="com.example.comp7506_1.todolist.Activity.ClockActivity">
 
     <ImageView
         android:id="@+id/clock_bg"
@@ -29,7 +29,7 @@
             android:layout_height="400dp"
             android:layout_gravity="center">
 
-            <com.example.comp7506.todolist.Widget.RippleWrapper
+            <com.example.comp7506_1.todolist.Widget.RippleWrapper
                 android:id="@+id/ripple_wrapper"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -40,13 +40,13 @@
                 app:rippleDelay="1000"
                 app:rippleDuration="2000">
 
-                <com.example.comp7506.todolist.Widget.ClockProgressBar
+                <com.example.comp7506_1.todolist.Widget.ClockProgressBar
                     android:id="@+id/tick_progress_bar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
 
-            </com.example.comp7506.todolist.Widget.RippleWrapper>
+            </com.example.comp7506_1.todolist.Widget.RippleWrapper>
 
 
             <TextView

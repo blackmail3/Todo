@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.comp7506.todolist"
+    package="com.example.comp7506_1.todolist"
     android:versionCode="12"
     android:versionName="1.2.2">
     <!-- 自启动权限-->
@@ -41,7 +41,7 @@
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
-        android:name="com.example.comp7506.todolist.Widget.ClockApplication"
+        android:name="com.example.comp7506_1.todolist.Widget.ClockApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -51,7 +51,7 @@
 
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
-            android:authorities="com.example.comp7506.todolist.BmobContentProvider">
+            android:authorities="com.example.comp7506_1.todolist.BmobContentProvider">
         </provider>
 
         <!-- 百度语音注册-->
@@ -69,7 +69,7 @@
             android:exported="false"/>
 
         <activity
-            android:name="com.example.comp7506.todolist.Activity.SplashActivity"
+            android:name="com.example.comp7506_1.todolist.Activity.SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -79,52 +79,52 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.comp7506.todolist.Activity.MainActivity"
+            android:name="com.example.comp7506_1.todolist.Activity.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.comp7506.todolist.Activity.NewTodoActivity"
-            android:parentActivityName="com.example.comp7506.todolist.Activity.MainActivity"
+            android:name="com.example.comp7506_1.todolist.Activity.NewTodoActivity"
+            android:parentActivityName="com.example.comp7506_1.todolist.Activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.example.comp7506.todolist.Activity.EditTodoActivity" />
+        <activity android:name="com.example.comp7506_1.todolist.Activity.EditTodoActivity" />
 
-        <service android:name="com.example.comp7506.todolist.Service.AlarmService"
+        <service android:name="com.example.comp7506_1.todolist.Service.AlarmService"
                 android:process=":live">
             <intent-filter>
                 <action
-                    android:name="com.example.lulin.todolist.Service.AlarmService"
+                    android:name="com.example.comp7506_1.todolist.Service.AlarmService"
                     />
             </intent-filter>
         </service>
 
         <receiver
-            android:name="com.example.comp7506.todolist.Receiver.AlarmReceiver"
+            android:name="com.example.comp7506_1.todolist.Receiver.AlarmReceiver"
             android:enabled="true"
             android:exported="true"
             android:process=":remote" />
 
 
         <activity
-            android:name="com.example.comp7506.todolist.Activity.RegisterActivity"
+            android:name="com.example.comp7506_1.todolist.Activity.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.comp7506.todolist.Activity.UserDataActivity"
+            android:name="com.example.comp7506_1.todolist.Activity.UserDataActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <service
-            android:name="com.example.comp7506.todolist.Service.FocusService"
+            android:name="com.example.comp7506_1.todolist.Service.FocusService"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name="com.example.comp7506.todolist.Service.ClockService"
+            android:name="com.example.comp7506_1.todolist.Service.ClockService"
             android:enabled="true"
             android:exported="false">
         </service>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.example.fileprovider"
+            android:authorities="com.example.comp7506_1.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -133,29 +133,29 @@
         </provider>
 
         <activity
-            android:name="com.example.comp7506.todolist.Activity.BasicActivity"
+            android:name="com.example.comp7506_1.todolist.Activity.BasicActivity"
             android:label="@string/title_activity_basic" />
         <activity
-            android:name="com.example.comp7506.todolist.Activity.SettingsActivity"
+            android:name="com.example.comp7506_1.todolist.Activity.SettingsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.comp7506.todolist.Activity.LoginActivity"
+            android:name="com.example.comp7506_1.todolist.Activity.LoginActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.comp7506.todolist.Activity.AboutActivity"
+            android:name="com.example.comp7506_1.todolist.Activity.AboutActivity"
             android:theme="@style/AppTheme.About" />
         <activity
-            android:name="com.example.comp7506.todolist.Activity.ClockActivity"
+            android:name="com.example.comp7506_1.todolist.Activity.ClockActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:launchMode="singleTask"
             android:excludeFromRecents="true"/>
         <activity
-        android:name="com.example.comp7506.todolist.Activity.ScheduleActivity"
+        android:name="com.example.comp7506_1.todolist.Activity.ScheduleActivity"
         android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
-            android:name="com.example.comp7506.todolist.Activity.NewClockActivity"
+            android:name="com.example.comp7506_1.todolist.Activity.NewClockActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <!-- Bmob云自动更新-->
@@ -165,7 +165,7 @@
         </activity>
 
         <!-- 监听系统广播自启动app-->
-        <receiver android:name="com.example.comp7506.todolist.Receiver.BootUpReceiver" >
+        <receiver android:name="com.example.comp7506_1.todolist.Receiver.BootUpReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.QUICKBOOT_POWERON" />
