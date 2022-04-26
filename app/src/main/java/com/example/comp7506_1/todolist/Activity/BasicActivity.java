@@ -18,7 +18,7 @@ import es.dmoral.toasty.Toasty;
 public class BasicActivity extends AppCompatActivity {
     private boolean isRegistered = false;
     private NetworkReceiver networkReceiver;
-    private static final String APP_ID = "1c54d5b204e98654778c77547afc7a66";
+    private static final String APP_ID = "326f04efe6b199580a43c98b4ae5c396";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

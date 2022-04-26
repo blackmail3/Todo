@@ -21,7 +21,7 @@ import site.gemus.openingstartanimation.OpeningStartAnimation;
 public class SplashActivity extends BasicActivity {
 
     private final int SPLASH_DISPLAY_LENGTH = 1500;
-    private static final String APP_ID = "1c54d5b204e98654778c77547afc7a66";
+    private static final String APP_ID = "326f04efe6b199580a43c98b4ae5c396";
     private NetworkReceiver networkReceiver;
     private FileUtils fileUtils;
     private static final String KEY_VIBRATE = "vibrator";

@@ -11,7 +11,7 @@ import cn.bmob.v3.Bmob;
 
 public class NetworkReceiver extends BroadcastReceiver {
 
-    private static final String APP_ID = "1c54d5b204e98654778c77547afc7a66";
+    private static final String APP_ID = "326f04efe6b199580a43c98b4ae5c396";
 
     @Override
     public void onReceive(Context context, Intent intent) {

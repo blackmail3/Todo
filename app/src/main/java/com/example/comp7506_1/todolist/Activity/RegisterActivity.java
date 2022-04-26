@@ -71,54 +71,27 @@ public class RegisterActivity extends BasicActivity implements View.OnClickListe
                     }
 
                     final User user = new User();
-                    final String path = this.getApplicationContext().getFilesDir().getAbsolutePath() + "/default_head.png";
-                    Log.i("register", path);
-                    final BmobFile bmobFile = new BmobFile(new File(path));
-                    bmobFile.uploadblock(new UploadFileListener() {
+
+                    Log.i("register", "Uploaded successfully");
+                    user.setUsername(username);
+                    user.setPassword(password);
+                    user.setNickName(username);
+                    user.setAutograph("Individuality signature");
+//                                user.setImg(bmobFile);
+                    user.setTotal(0);
+                    user.signUp(new SaveListener<User>() {
                         @Override
-                        public void done(BmobException e) {
-                            if (e==null){
-
-                                Log.i("register", "Uploaded successfully" + bmobFile.getUrl());
-                                user.setUsername(username);
-                                user.setPassword(password);
-                                user.setNickName(username);
-                                user.setAutograph("Individuality signature");
-                                user.setImg(bmobFile);
-                                user.setTotal(0);
-                                user.signUp(new SaveListener<User>() {
-                                    @Override
-                                    public void done(User s, BmobException e) {
-                                        if(e==null){
-                                            Toasty.success(RegisterActivity.this, "Registered successfully", Toast.LENGTH_SHORT, true).show();
-                                            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                            startActivity(intent);
-                                            finish();
-                                        }else{
-                                            Toasty.error(RegisterActivity.this, "Registration failed", Toast.LENGTH_SHORT, true).show();
-                                            Log.i("register", e.getMessage());
-                                        }
-                                    }
-                                });
-
-                            }else {
-                                Log.i("register", "fail!" + e.getMessage() + path);
-                            }
-
-                        }
-
-                        @Override
-                        public void onProgress(Integer value) {
-
+                        public void done(User s, BmobException e) {if(e==null){
+                            Toasty.success(RegisterActivity.this, "Registered successfully", Toast.LENGTH_SHORT, true).show();
+                            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }else{
+                            Toasty.error(RegisterActivity.this, "Registration failed", Toast.LENGTH_SHORT, true).show();
+                            Log.i("register", e.getMessage());}
                         }
                     });
-
-                } else {
-                    Toasty.error(RegisterActivity.this, "No network connection", Toast.LENGTH_SHORT, true).show();
                 }
-
-
-
                 break;
 
             case R.id.back_login:
@@ -127,9 +100,6 @@ public class RegisterActivity extends BasicActivity implements View.OnClickListe
                 finish();
                 break;
         }
-
-
-
     }
 
 
