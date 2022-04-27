@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#54aadb</color>
+    <color name="colorPrimary">#16a951</color>
 
-    <color name="colorPrimaryDark">#54aadb</color>
+    <color name="colorPrimaryDark">#057748</color>
 
     <color name="textColorPrimary">#FFFFFF</color>
 
@@ -10,7 +10,7 @@
 
     <color name="navigationBarColor">#000000</color>
 
-    <color name="colorAccent">#54aadb</color>
+    <color name="colorAccent">#21a675</color>
 
     <color name="black_semi_transparent">#B2000000</color>
     <color name="black_semi">#3B3B3B</color>
@@ -34,10 +34,10 @@
     <color name="deadline_orange">#ea9d16</color>
 
     <!-- dots inactive colors -->
-    <color name="dot_dark_screen">#026499</color>
+    <color name="dot_dark_screen">#057748</color>
 
     <!-- dots active colors -->
-    <color name="dot_light_screen">#448bb2</color>
+    <color name="dot_light_screen">#16a951</color>
 
     <color name="titleTextColor">#000000</color>
 
@@ -62,7 +62,7 @@
     <color name="text1">#4D4D4D</color>
     <color name="text2">#999999</color>
 
-    <color name="icon_color">#4a8fff</color>
+    <color name="icon_color">#9ed900</color>
 
     <color name="rice">#FFFFF0</color>
     <color name="colorTextDark">#333333</color>
@@ -72,9 +72,9 @@
     <color name="colorStrokeArc">#ffffff</color>
     <color name="colorDivider">#E9E9E9</color>
     <!-- Toast color-->
-    <color name="toastSuccess">#57BDAA</color>
+    <color name="toastSuccess">#00e079</color>
     <color name="toastError">#FD5B78</color>
-    <color name="toastInfo">#7bbfea</color>
+    <color name="toastInfo">#00e091</color>
     <color name="toastNormal">#828281</color>
 
 

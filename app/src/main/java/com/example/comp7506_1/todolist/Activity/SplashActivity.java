@@ -47,7 +47,7 @@ public class SplashActivity extends BasicActivity {
                 .setDrawStategy(new NormalDrawStrategy())
                 .setAppIcon(res.getDrawable(R.drawable.ic_launcher))
                 .setColorOfAppName(R.color.icon_color)
-                .setAppStatement("Cease to struggle, Cease to life")
+                .setAppStatement("")
                 .setColorOfAppStatement(R.color.icon_color)
                 .create();
         openingStartAnimation.show(this);

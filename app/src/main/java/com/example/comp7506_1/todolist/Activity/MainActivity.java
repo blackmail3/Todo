@@ -158,7 +158,7 @@ public class MainActivity extends BasicActivity implements NavigationView.OnNavi
             glideLoad();
         }
 
-        initPermission();
+
         initView();
         initViewPager();
         initGuide();
@@ -280,27 +280,6 @@ public class MainActivity extends BasicActivity implements NavigationView.OnNavi
 
             case R.id.user_image:
 
-                CircularAnim.fullActivity(MainActivity.this, view)
-                        .go(new CircularAnim.OnAnimationEndListener() {
-                            @Override
-                            public void onAnimationEnd() {
-                                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-                                drawer.closeDrawer(GravityCompat.START);
-                                if (NetWorkUtils.isNetworkConnected(getApplication())){
-                                    local_user = User.getCurrentUser(User.class);
-                                }
-                                if (local_user != null){
-                                    Intent intent = new Intent(MainActivity.this, UserDataActivity.class);
-                                    startActivityForResult(intent, 1);
-                                } else {
-                                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                                    startActivityForResult(intent,1);
-                                }
-                            }
-                        });
-
-                break;
-
             case R.id.nick_name:
 
                 CircularAnim.fullActivity(MainActivity.this, view)
@@ -323,6 +302,7 @@ public class MainActivity extends BasicActivity implements NavigationView.OnNavi
                         });
 
                 break;
+
         }
     }
 
@@ -622,27 +602,6 @@ public class MainActivity extends BasicActivity implements NavigationView.OnNavi
         }
     }
 
-    private void initPermission() {
-        String permission[] = { Manifest.permission.RECORD_AUDIO,
-                Manifest.permission.ACCESS_NETWORK_STATE,
-                Manifest.permission.INTERNET,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.RECEIVE_BOOT_COMPLETED,
-                Manifest.permission.ACCESS_NOTIFICATION_POLICY
-        };
-        ArrayList<String> applyList = new ArrayList<>();
 
-        for (String per : permission) {
-            if (PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(this, per)) {
-                applyList.add(per);
-            }
-        }
-
-        String tmpList[] = new String[applyList.size()];
-        if (!applyList.isEmpty()) {
-            ActivityCompat.requestPermissions(this, applyList.toArray(tmpList), 123);
-        }
-
-    }
 
 }

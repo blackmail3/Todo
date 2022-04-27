@@ -66,7 +66,7 @@ public class ScheduleActivity extends AppCompatActivity {
                             @Override
                             public void done(List<Clock> list, BmobException e) {
                                 if (e==null){
-                                    Log.i("Clock", "查询到: " +list.size()+" 条数据");
+                                    Log.i("Clock", "Number of data: " +list.size());
                                     if (list.size()==0){
                                         todayDurations.setText("0");
                                         todayTimes.setText("0");
@@ -77,13 +77,11 @@ public class ScheduleActivity extends AppCompatActivity {
                                             tdDuration += clock.getDuration();
                                             todayDurations.setText(String.valueOf(tdDuration));
                                             todayTimes.setText(String.valueOf(tdTimes));
-                                            Log.i("Clock", "番茄钟个数：" + tdTimes);
-                                            Log.i("Clock", "累计时间： " + tdDuration);
+                                            Log.i("Clock", "Tomato Number: " + tdTimes);
+                                            Log.i("Clock", "Cumulative Time: " + tdDuration);
                                         }
                                     }
 
-                                } else {
-                                    Toasty.info(ScheduleActivity.this, "查询网络数据失败"+ e.getMessage(), Toast.LENGTH_SHORT, true).show();
                                 }
                             }
                         });
@@ -96,7 +94,7 @@ public class ScheduleActivity extends AppCompatActivity {
                             @Override
                             public void done(List<Clock> list, BmobException e) {
                                 if (e==null){
-                                    Log.i("Clock", "查询到: " +list.size()+" 条数据");
+                                    Log.i("Clock", "Number of data: " +list.size());
                                     if (list.size()==0){
                                         amountDurations.setText("0");
                                         amountTimes.setText("0");
@@ -107,13 +105,11 @@ public class ScheduleActivity extends AppCompatActivity {
                                             allDuration += clock.getDuration();
                                             amountDurations.setText(String.valueOf(allDuration));
                                             amountTimes.setText(String.valueOf(allTimes));
-                                            Log.i("Clock", "番茄钟个数：" + allTimes);
-                                            Log.i("Clock", "累计时间： " + allDuration);
+                                            Log.i("Clock", "Tomato Number: " + allTimes);
+                                            Log.i("Clock", "Cumulative Time: " + allDuration);
                                         }
                                     }
 
-                                } else {
-                                    Toasty.info(ScheduleActivity.this, "查询网络数据失败"+ e.getMessage(), Toast.LENGTH_SHORT, true).show();
                                 }
                             }
                         });

@@ -88,7 +88,7 @@ public class NewClockActivity extends BasicActivity implements EventListener {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         dbHelper = new MyDatabaseHelper(NewClockActivity.this, "Data.db", null, 2);
         db = dbHelper.getWritableDatabase();
-        initPermission();
+//        initPermission();
         initView();
         initClick();
         initHeadImage();
@@ -248,24 +248,24 @@ public class NewClockActivity extends BasicActivity implements EventListener {
 
     }
 
-    private void initPermission() {
-        String permission[] = {Manifest.permission.RECORD_AUDIO,
-                Manifest.permission.ACCESS_NETWORK_STATE,
-                Manifest.permission.INTERNET,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE};
-        ArrayList<String> applyList = new ArrayList<>();
-
-        for (String per : permission) {
-            if (PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(this, per)) {
-                applyList.add(per);
-            }
-        }
-
-        String tmpList[] = new String[applyList.size()];
-        if (!applyList.isEmpty()) {
-            ActivityCompat.requestPermissions(this, applyList.toArray(tmpList), 123);
-        }
-    }
+//    private void initPermission() {
+//        String permission[] = {Manifest.permission.RECORD_AUDIO,
+//                Manifest.permission.ACCESS_NETWORK_STATE,
+//                Manifest.permission.INTERNET,
+//                Manifest.permission.WRITE_EXTERNAL_STORAGE};
+//        ArrayList<String> applyList = new ArrayList<>();
+//
+//        for (String per : permission) {
+//            if (PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(this, per)) {
+//                applyList.add(per);
+//            }
+//        }
+//
+//        String tmpList[] = new String[applyList.size()];
+//        if (!applyList.isEmpty()) {
+//            ActivityCompat.requestPermissions(this, applyList.toArray(tmpList), 123);
+//        }
+//    }
 
     @Override
     public void onBackPressed() {

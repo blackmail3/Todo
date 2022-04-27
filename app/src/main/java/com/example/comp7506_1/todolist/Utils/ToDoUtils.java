@@ -110,7 +110,7 @@ public class ToDoUtils {
             @Override
             public void done(List<Todos> list, BmobException e) {
                 if (e==null){
-                    Log.i("ToDoUtils", "查询到网络任务个数: " + list.size());
+                    Log.i("ToDoUtils", "Number of data: " +list.size());
                     // 1.更新本地数据库
                     if (list.size() > 0) {
 //                        ToDoDao toDoDao = new ToDoDao(context);
@@ -127,7 +127,7 @@ public class ToDoUtils {
                     getTodosCallBack.onSuccess(list);
 
                 } else {
-                    Log.i("ToDoUtils", "查询失败："+e.getMessage());
+                    Log.i("ToDoUtils", "Failed to find todos："+e.getMessage());
                     getTodosCallBack.onError(e.getErrorCode(),e.getMessage());
                 }
 

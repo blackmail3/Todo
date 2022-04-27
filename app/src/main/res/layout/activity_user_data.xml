@@ -22,8 +22,7 @@
 
 
         <android.support.design.widget.CollapsingToolbarLayout
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/toolbar_layout"
+                android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
@@ -38,13 +37,6 @@
                 android:orientation="vertical"
                 app:layout_collapseMode="pin"
                 app:layout_collapseParallaxMultiplier="0.7">
-
-                <ImageView
-                    android:id="@+id/top_bg"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_img1"
-                    android:scaleType="centerCrop" />
 
             </LinearLayout>
 
@@ -113,6 +105,13 @@
         app:elevation="0dp"
         app:layout_anchor="@+id/user_app_bar"
         app:layout_anchorGravity="right|bottom" />
+    <ImageView
+            android:id="@+id/top_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_img1"
+            android:scaleType="centerCrop" app:layout_anchorGravity="center"
+            app:layout_anchor="@+id/user_app_bar"/>
 
 
 </android.support.design.widget.CoordinatorLayout>

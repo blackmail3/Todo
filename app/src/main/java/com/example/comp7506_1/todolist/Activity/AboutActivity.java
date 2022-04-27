@@ -17,9 +17,8 @@ public class AboutActivity extends AbsAboutActivity {
 
     @Override
     protected void onCreateHeader(@NonNull ImageView icon, @NonNull TextView slogan, @NonNull TextView version) {
-        icon.setImageResource(R.mipmap.ic_launcher);
-        slogan.setText("Cease to struggle & You cease to live");
-        version.setText("v" + BuildConfig.VERSION_NAME);
+        icon.setImageResource(R.drawable.ic_launcher_white);
+        slogan.setText("Tomato to the struggle, Potato to the life");
     }
 
 

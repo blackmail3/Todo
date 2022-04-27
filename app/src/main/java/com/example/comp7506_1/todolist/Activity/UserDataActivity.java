@@ -40,7 +40,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.signature.ObjectKey;
 import com.example.comp7506_1.todolist.R;
 import com.example.comp7506_1.todolist.Adapter.FragmentAdapter;
-import com.example.comp7506_1.todolist.Fragment.RankFragment;
 import com.example.comp7506_1.todolist.Fragment.StatisticFragment;
 import com.example.comp7506_1.todolist.Utils.PhotoUtils;
 import com.example.comp7506_1.todolist.Utils.SPUtils;
@@ -138,7 +137,6 @@ public class UserDataActivity extends BasicActivity implements View.OnClickListe
 
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new StatisticFragment());
-        fragments.add(new RankFragment());
 
         viewPager.setOffscreenPageLimit(2);
 

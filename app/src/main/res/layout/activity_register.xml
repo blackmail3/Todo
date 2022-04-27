@@ -18,10 +18,11 @@
         android:orientation="vertical" >
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/do_it" />
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:layout_margin="50dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_launcher_white" />
 
         <TextView
             android:layout_width="wrap_content"

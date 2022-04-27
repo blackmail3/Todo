@@ -48,7 +48,7 @@ public class TomatoUtils {
             @Override
             public void done(List<Tomato> list, BmobException e) {
                 if (e==null){
-                    Log.i("TomatoUtils", "查询到网络任务个数: " + list.size());
+                    Log.i("TomatoUtils", "Number of data: " +list.size());
                     // 1.更新本地数据库
 //                    if (list.size() > 0) {
 //                        ClockDao clockDao = new ClockDao(context);
@@ -57,7 +57,7 @@ public class TomatoUtils {
                     getTomatoCallBack.onSuccess(list);
 
                 } else {
-                    Log.i("TomatoUtils", "查询失败："+e.getMessage());
+                    Log.i("TomatoUtils", "Failed to find clock info："+e.getMessage());
                     getTomatoCallBack.onError(e.getErrorCode(),e.getMessage());
                 }
 

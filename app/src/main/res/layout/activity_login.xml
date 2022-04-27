@@ -18,10 +18,11 @@
         android:orientation="vertical" >
 
         <ImageView
-            android:layout_width="100dp"
+            android:layout_width="300dp"
             android:layout_height="100dp"
+            android:layout_margin="50dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/do_it" />
+            android:src="@drawable/ic_launcher_white" />
 
 
     </LinearLayout>
@@ -32,10 +33,10 @@
         android:layout_centerInParent="true" >
 
         <include
-            android:id="@+id/login_input_layout"
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            layout="@layout/login_input_layout" />
+                android:id="@+id/login_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                layout="@layout/login_input_layout"/>
 
         <include
             android:id="@+id/login_layout_progress"
@@ -62,7 +63,7 @@
                 android:text="Remember Me"
                 android:textSize="14sp"
                 android:theme="@style/My_CheckBox"
-                android:textColor="@color/half_black_2" />
+                android:textColor="@color/black_semi" />
 
             <!--<Button-->
                 <!--android:layout_width="0dp"-->
@@ -93,32 +94,31 @@
             <!--android:textSize="20sp" />-->
 
         <Button
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@+id/layout_check"
-            android:layout_centerInParent="true"
-            android:background="@drawable/translucent"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="Log in"
-            android:textSize="16sp"
-            android:textColor="@color/half_black_2"/>
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/layout_check"
+                android:background="@drawable/translucent"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Log in"
+                android:textSize="16sp"
+                android:textColor="@color/black_semi" android:layout_centerInParent="true"/>
 
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/skip_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:clickable="true"
-        android:text="Skip"
-        android:textColor="@drawable/text_press"
-        android:textSize="16sp" />
+            android:id="@+id/skip_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="50dp"
+            android:clickable="true"
+            android:text="Skip"
+            android:textColor="@drawable/text_press"
+            android:textSize="16sp"/>
 
 </RelativeLayout>

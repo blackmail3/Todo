@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:text="Configure"
+                android:text="Configuration"
                 android:textColor="@color/white"
                 android:textSize="18sp"/>
         </android.support.v7.widget.Toolbar>

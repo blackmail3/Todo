@@ -42,15 +42,13 @@
     <string name="appbar_circleimageview_behavior">com.example.comp7506_1.todolist.CircleImageInUsercBehavior</string>
     <string name="appbar_overscroll_behavior">com.example.comp7506_1.todolist.AppBarLayoutOverScrollViewBehavior</string>
 
-    <string name="about_app">Welcome!
-        \n\n This is a todo - pomodoro clock application based on Material Design specification
-        \n\n Provides to-do list, tomato clock, white noise, focus mode, data synchronization, data statistics and more
-        \n\n In order to bring better user experience, the overall interface is based on Google\'s latest Material Design specifications, simple and elegant.
+    <string name="about_app">
+        \nThis is a todo - potato clock application
+        \n\n Provides to-do list, tomato clock and data statistics
+        \n\n Our target is to help the people people who are easy to be distracted, easy to procrastinate, easy to forget but willing to change!
          </string>
     <string name="about_function"> - To-do list: exquisite to-do card, provide arrival reminder, repeat reminder and other functions.
-        \n\n - Pomodoro Clock: Minimalist interface, based on pomodoro method, set every 25 minutes as a task interval, focus on study and work, improve efficiency.
-        \n\n - White noise: When your tomato clock is working, you can choose to turn on natural pure music to help you work more pleasant, more comfortable sleep.
-        \n\n - Focus mode: After turning on the focus mode, it will block other apps from opening, allowing you to focus more on study and work.
+        \n\n - Pomodoro Clock: Set every 25 minutes as a task interval, focus on study and work, improve efficiency.
         \n\n - Data statistics: Real-time statistics of users\' tomato clock data.
     </string>
 
